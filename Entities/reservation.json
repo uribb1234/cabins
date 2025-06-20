@@ -1,0 +1,46 @@
+   "name": "Reservation",
+  "type": "object",
+  "properties": {
+    "customer_name": {
+      "type": "string",
+      "description": "שם הלקוח"
+    },
+    "customer_phone": {
+      "type": "string",
+      "description": "טלפון הלקוח"
+    },
+    "customer_email": {
+      "type": "string",
+      "description": "אימייל הלקוח"
+    },
+    "zimmer_id": {
+      "type": "string",
+      "description": "מזהה הצימר"
+    },
+    "check_in_date": {
+      "type": "string",
+      "format": "date",
+      "description": "תאריך כניסה"
+    },
+    "check_out_date": {
+      "type": "string",
+      "format": "date",
+      "description": "תאריך יציאה"
+    },
+    "number_of_guests": {
+      "type": "number",
+      "description": "מספר אורחים"
+    },
+    "special_requests": {
+      "type": "string",
+      "description": "בקשות מיוחדות"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "confirmed",
+        "cancelled"
+      ],
+      "default": "pending",
+ 
