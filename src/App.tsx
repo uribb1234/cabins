@@ -2,6 +2,8 @@ import React from "react";
 import HeroSection from "./components/HeroSection";
 import ContactSection from "./components/ContactSection";
 import { Zimmer } from "./components/ZimmerCard";
+import CabinIcon from "./assets/cabinicon.svg?react";
+import smallPoolImage from "./components/assets/smallpool.jpeg";
 
 const rawZimmers: Zimmer[] = [
   {
@@ -45,9 +47,7 @@ const rawZimmers: Zimmer[] = [
     name: "רימון",
     price: 450,
     description: "צימר יוקרתי עם נוף פנורמי וחצר פרטית",
-    images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    ],
+    images: [smallPoolImage], // שימוש בתמונה המיובאת
     capacity: 4,
     is_available: true,
     link: "/room-rimon",
