@@ -28,6 +28,11 @@ const ZimmerCard: React.FC<ZimmerCardProps> = ({ zimmer }) => {
     link,
   } = zimmer;
 
+  // קביעת סוג הצימר לפי כמות האורחים
+  const isFamily = capacity >= 3;
+  const tagText = isFamily ? "צימר משפחתי" : "צימר זוגי";
+  const tagColor = isFamily ? "bg-blue-100 text-blue-800 border-blue-200" : "bg-green-100 text-green-800 border-green-200";
+
   return (
     <div className="group zimmer-card">
       <a
@@ -48,7 +53,13 @@ const ZimmerCard: React.FC<ZimmerCardProps> = ({ zimmer }) => {
         </div>
 
         <div className="card-content p-6 flex flex-col justify-between h-full">
-          <h3 className="text-2xl font-bold mb-2">{name}</h3>
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="text-2xl font-bold">{name}</h3>
+            <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${tagColor}`}>
+              {tagText}
+            </span>
+          </div>
+
           <p className="text-gray-600 mb-4">{description}</p>
 
           <div className="flex justify-between items-center mt-auto">

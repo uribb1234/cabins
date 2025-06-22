@@ -14,7 +14,7 @@ const rawZimmers: Zimmer[] = [
     images: [
       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     ],
-    capacity: 2,
+    capacity: 6,
     is_available: true,
     link: "/room-ela",
   },
@@ -38,7 +38,7 @@ const rawZimmers: Zimmer[] = [
     images: [
       "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     ],
-    capacity: 3,
+    capacity: 2,
     is_available: true,
     link: "/room-tnina",
   },
@@ -48,7 +48,7 @@ const rawZimmers: Zimmer[] = [
     price: 450,
     description: "צימר יוקרתי עם נוף פנורמי וחצר פרטית",
     images: [smallPoolImage], // שימוש בתמונה המיובאת
-    capacity: 4,
+    capacity: 2,
     is_available: true,
     link: "/room-rimon",
   },
