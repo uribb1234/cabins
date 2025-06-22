@@ -39,7 +39,6 @@ a:hover {
   font-weight: 300;
 }
 
-/* --- כפתור מותאם אישית --- */
 a.custom-button {
   all: unset;
   display: inline-flex;
@@ -80,41 +79,44 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* --- מסגרת צימר עם טקסטורה ירוק־אפור --- */
+/* --- מסגרת כרטיס --- */
 .zimmer-border {
   position: relative;
   width: 100%;
   max-width: 300px;
-  margin: 5px;
-  padding: 6px;
-  background-image: repeating-linear-gradient(
+  border: 5px solid;
+  border-image: repeating-linear-gradient(
     45deg,
-    #6B705C,
-    #6B705C 5px,
-    #8A9A5B 5px,
-    #8A9A5B 10px
+    #6b705c,
+    #8a9a5b 10px,
+    #6b705c 20px
   );
-  border-radius: 12px;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  border-image-slice: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 0;
 }
 
-/* --- כרטיסייה פנימית --- */
+/* --- כרטיס Zimmer --- */
 .zimmer-card {
   background-color: #ffffff;
   color: #374151;
-  border-radius: 8px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 0;
+  box-shadow: none;
   transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
+  position: relative;
+  padding: 0;
   width: 100%;
+  max-width: 300px;
+  z-index: 1;
 }
 
-.zimmer-card:hover {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.zimmer-card:hover h3 {
+  color: #f59e0b;
 }
 
 .zimmer-card img {
@@ -124,7 +126,7 @@ button:focus-visible {
   transition: transform 0.7s ease;
 }
 .zimmer-card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .zimmer-card .card-content {
@@ -140,9 +142,6 @@ button:focus-visible {
   font-weight: 700;
   color: #374151;
   transition: color 0.3s ease;
-}
-.zimmer-card:hover h3 {
-  color: #f59e0b;
 }
 
 .zimmer-card .price {
@@ -183,28 +182,29 @@ button:focus-visible {
   border: 1px solid #a7f3d0;
 }
 
-/* --- קונטיינר וגריד לצימרים --- */
+/* --- גריד עם כרטיסיות צמודות --- */
 .zimmer-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 0;
 }
 
 .grid-cols-1.sm\:grid-cols-2 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 10px;
+  gap: 0;
   justify-items: center;
 }
 @media (min-width: 640px) {
   .grid-cols-1.sm\:grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 0;
+    justify-items: center;
   }
 }
 
-/* --- קבוצת כותרת עם אייקון --- */
+/* --- קבוצת אייקון + כותרת --- */
 .icon-title-group {
   display: flex;
   align-items: center;
@@ -215,54 +215,44 @@ button:focus-visible {
   line-height: 1.2;
 }
 
-/* --- ניווט צף מימין למעלה --- */
-nav {
-  position: fixed !important;
-  top: 0;
-  right: 0;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-  border-bottom-left-radius: 10px;
-  z-index: 1000;
-}
-
-/* --- עיצוב למצבי בהירות --- */
+/* --- מצבי ניגוד --- */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
-
   a:hover {
     color: #747bff;
   }
-
   button {
     background-color: #f9f9f9;
   }
-
   a.custom-button {
     background-color: rgba(0, 0, 0, 0.1);
     border-color: #000000;
     color: #000000;
   }
-
   a.custom-button:hover {
     background-color: rgba(0, 0, 0, 0.2);
   }
-
   .zimmer-card {
     background-color: #ffffff;
   }
-
   .zimmer-card h3 {
     color: #374151;
   }
-
   .zimmer-card .price {
     color: #d97706;
   }
 }
+
+/* --- תפריט ניווט --- */
+nav {
+  position: fixed !important;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
 
 
