@@ -45,16 +45,16 @@ const ZimmerCard: React.FC<ZimmerCardProps> = ({ zimmer }) => {
             alt={name}
             className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
           />
-          <div className="absolute bottom-4 left-4">
+          <div className="absolute bottom-4 left-4 flex items-center space-x-2 icon-title-group">
             <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg">
               <CabinIcon className="w-5 h-5 text-gray-700" />
             </div>
+            <h3 className="text-2xl font-bold text-gray-800 inline-block align-middle">{name}</h3>
           </div>
         </div>
 
         <div className="card-content p-6 flex flex-col justify-between h-full">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-2xl font-bold">{name}</h3>
+          <div className="flex justify-between items-center">
             <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${tagColor}`}>
               {tagText}
             </span>

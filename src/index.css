@@ -163,6 +163,17 @@ button:focus-visible {
   }
 }
 
+.icon-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* רווח בין האייקון לכותרת */
+}
+
+.icon-title-group h3 {
+  margin: 0; /* הסר מרווחים לא רצויים */
+  line-height: 1.2; /* התאם את גובה השורה */
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
