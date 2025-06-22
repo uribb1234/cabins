@@ -5,6 +5,10 @@ import { Zimmer } from "./components/ZimmerCard";
 import CabinIcon from "./assets/cabinicon.svg?react";
 import smallPoolImage from "./components/assets/smallpool.jpeg";
 import fig from "./components/assets/fig.jpeg";
+import alon from "./components/assets/alon.png";
+import ela from "./components/assets/ela.png";
+
+
 
 
 const rawZimmers: Zimmer[] = [
@@ -13,9 +17,7 @@ const rawZimmers: Zimmer[] = [
     name: "אלה",
     price: 520,
     description: "צימר רומנטי עם נוף מרהיב ואמבטיה מפנקת",
-    images: [
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    ],
+    images: [ela],
     capacity: 6,
     is_available: true,
     link: "/room-ela",
@@ -25,9 +27,7 @@ const rawZimmers: Zimmer[] = [
     name: "אלון",
     price: 380,
     description: "צימר משפחתי נעים עם חצר ופינת ילדים",
-    images: [
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    ],
+    images: [alon],
     capacity: 6,
     is_available: true,
     link: "/room-alon",
