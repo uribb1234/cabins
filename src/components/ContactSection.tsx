@@ -1,8 +1,13 @@
-import React from "react"; // ודא שהיבוא הזה קיים ותקין
+import React from "react";
 
-export default function ContactSection() {
+// הגדרת ממשק ל-props
+interface ContactSectionProps {
+  id?: string; // id כפרופ אופציונלי
+}
+
+export default function ContactSection({ id }: ContactSectionProps) {
   return (
-    <section className="py-20 bg-gray-100" dir="rtl">
+    <section id={id} className="py-20 bg-gray-100" dir="rtl">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-black mb-6">צרו קשר</h2>
@@ -33,27 +38,26 @@ export default function ContactSection() {
             <p className="text-gray-600 mb-4">
               חוות יאיר, סמוך לאריאל במיקום שקט ומפנק
             </p>
-              <p>הצימרים ממוקמים בקרבה גבוהה למרכז הארץ. המיקום המדויק יישלח לאחר סגירת ההזמנה.</p>
+            <p>הצימרים ממוקמים בקרבה גבוהה למרכז הארץ. המיקום המדויק יישלח לאחר סגירת ההזמנה.</p>
 
-<p><strong>הערות:</strong></p>
-<ul>
-  <li>המחירים אינם כוללים את חודשי יולי-אוגוסט ואת תקופות החגים.</li>
-  <li>מחיר לאדם נוסף בצימר המשפחתי: 200 ש"ח.</li>
-</ul>
+            <p><strong>הערות:</strong></p>
+            <ul>
+              <li>המחירים אינם כוללים את חודשי יולי-אוגוסט ואת תקופות החגים.</li>
+              <li>מחיר לאדם נוסף בצימר המשפחתי: 200 ש"ח.</li>
+            </ul>
 
-<p><strong>בקרבת מקום (5 דקות נסיעה):</strong></p>
-<ul>
-  <li>בית קפה בטבע "קופיקנה" – ניתן לאכול שם ארוחת בוקר.</li>
-</ul>
+            <p><strong>בקרבת מקום (5 דקות נסיעה):</strong></p>
+            <ul>
+              <li>בית קפה בטבע "קופיקנה" – ניתן לאכול שם ארוחת בוקר.</li>
+            </ul>
 
-<p><strong>אטרקציות באזור:</strong></p>
-<ul>
-  <li>יקבים: יקב שילה, יקב טורא, יקב פסגות, יקב גבעות</li>
-  <li>טיולי ריינג'רים</li>
-  <li>רכיבה על סוסים</li>
-  <li>ועוד...</li>
-</ul>
-
+            <p><strong>אטרקציות באזור:</strong></p>
+            <ul>
+              <li>יקבים: יקב שילה, יקב טורא, יקב פסגות, יקב גבעות</li>
+              <li>טיולי ריינג'רים</li>
+              <li>רכיבה על סוסים</li>
+              <li>ועוד...</li>
+            </ul>
           </div>
 
           <div className="bg-white p-6 shadow-md rounded-lg text-center">

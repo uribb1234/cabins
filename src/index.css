@@ -203,3 +203,8 @@ button:focus-visible {
     color: #d97706;
   }
 }
+nav {
+  position: fixed !important; /* מבטיח שהמיקום קבוע */
+  right: 0;
+  top: 0;
+}

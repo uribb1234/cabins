@@ -7,9 +7,7 @@ import smallPoolImage from "./components/assets/smallpool.jpeg";
 import fig from "./components/assets/fig.jpeg";
 import alon from "./components/assets/alon.png";
 import ela from "./components/assets/ela.png";
-
-
-
+import NavMenu from "./NavMenu";
 
 const rawZimmers: Zimmer[] = [
   {
@@ -47,7 +45,7 @@ const rawZimmers: Zimmer[] = [
     name: "רימון",
     price: 450,
     description: "צימר יוקרתי עם נוף פנורמי וחצר פרטית",
-    images: [smallPoolImage], 
+    images: [smallPoolImage],
     capacity: 2,
     is_available: true,
     link: "/room-rimon",
@@ -57,8 +55,9 @@ const rawZimmers: Zimmer[] = [
 function App() {
   return (
     <div>
+      <NavMenu />
       <HeroSection zimmers={rawZimmers} />
-      <ContactSection />
+      <ContactSection id="contact" /> {/* הוספת id="contact" כאן */}
     </div>
   );
 }
