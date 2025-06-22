@@ -43,8 +43,8 @@ export default function HeroSection({ zimmers }: HeroSectionProps) {
         <h2 className="text-3xl font-semibold mb-8">הצימרים שלנו</h2>
       </div>
 
-      {/* גריד בעיצוב 2 עמודות, ממורכז לחלוטין */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-6xl">
+      {/* גריד עם מרווחים קטנים */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 w-full max-w-6xl">
         {zimmers.map((zimmer) => (
           <ZimmerCard key={zimmer.id} zimmer={zimmer} />
         ))}

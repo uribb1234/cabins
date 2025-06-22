@@ -4,7 +4,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: white;
-  background-color: turquoise;
+  background-color: #319795;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,60 +39,61 @@ a:hover {
   font-weight: 300;
 }
 
-a.custom-button {
-  all: unset;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: 2px solid #ffffff;
-  color: #ffffff;
-  padding: 10px 20px;
-  font-size: 1.25rem;
-  font-weight: 600;
-  border-radius: 20px;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  transition: background-color 0.3s;
-}
-a.custom-button:hover {
-  background-color: rgba(255, 255, 255, 0.3);
+.zimmer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.grid-cols-1.sm\:grid-cols-2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  justify-items: center;
 }
-button:hover {
-  border-color: #ffffff;
+@media (min-width: 640px) {
+  .grid-cols-1.sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+/* --- מסגרת עם טקסטורת גרדיאנט ירוק־אפור --- */
+.zimmer-border {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 5px;
+  padding: 6px; /* פנימי למסגרת */
+  background-image: repeating-linear-gradient(
+    45deg,
+    #6B705C,
+    #6B705C 5px,
+    #8A9A5B 5px,
+    #8A9A5B 10px
+  );
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 .zimmer-card {
-  border-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  color: #374151;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
   transition: all 0.5s ease;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  color: #374151;
   height: 100%;
+  overflow: hidden;
+  width: 100%;
 }
+
 .zimmer-card:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .zimmer-card img {
   width: 100%;
   height: 250px;
@@ -100,8 +101,9 @@ button:focus-visible {
   transition: transform 0.7s ease;
 }
 .zimmer-card:hover img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
+
 .zimmer-card .card-content {
   padding: 1.5rem;
   display: flex;
@@ -109,6 +111,7 @@ button:focus-visible {
   justify-content: space-between;
   height: 100%;
 }
+
 .zimmer-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -118,17 +121,20 @@ button:focus-visible {
 .zimmer-card:hover h3 {
   color: #f59e0b;
 }
+
 .zimmer-card .price {
   font-size: 1.5rem;
   font-weight: 700;
   color: #f59e0b;
 }
+
 .zimmer-card .features {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
+
 .zimmer-card .feature {
   display: flex;
   align-items: center;
@@ -137,11 +143,13 @@ button:focus-visible {
   padding: 0.5rem 0.75rem;
   border-radius: 9999px;
 }
+
 .zimmer-card .feature svg {
   width: 1rem;
   height: 1rem;
   color: #d97706;
 }
+
 .zimmer-card .availability {
   display: inline-flex;
   align-items: center;
@@ -152,28 +160,17 @@ button:focus-visible {
   border: 1px solid #a7f3d0;
 }
 
-/* גריד מוצלח להצגת כרטיסיות */
-.grid-cols-1.sm\:grid-cols-2 {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-}
-@media (min-width: 640px) {
-  .grid-cols-1.sm\:grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 .icon-title-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem; /* רווח בין האייקון לכותרת */
+  gap: 0.5rem;
 }
-
 .icon-title-group h3 {
-  margin: 0; /* הסר מרווחים לא רצויים */
-  line-height: 1.2; /* התאם את גובה השורה */
+  margin: 0;
+  line-height: 1.2;
 }
 
+/* --- עבור מצב בהיר --- */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -203,8 +200,4 @@ button:focus-visible {
     color: #d97706;
   }
 }
-nav {
-  position: fixed !important; /* מבטיח שהמיקום קבוע */
-  right: 0;
-  top: 0;
-}
+
