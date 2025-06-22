@@ -33,9 +33,27 @@ export default function ContactSection() {
             <p className="text-gray-600 mb-4">
               חוות יאיר, סמוך לאריאל במיקום שקט ומפנק
             </p>
-            <p className="text-lg font-semibold text-green-600">
-              מיקום מדויק ישלח לאחר סגירת  עסקת ההזמנה
-            </p>
+              <p><strong>מיקום:</strong> הצימרים ממוקמים בקרבה גבוהה למרכז הארץ. המיקום המדויק יישלח לאחר סגירת ההזמנה.</p>
+
+<p><strong>הערות:</strong></p>
+<ul>
+  <li>המחירים אינם כוללים את חודשי יולי-אוגוסט ואת תקופות החגים.</li>
+  <li>מחיר לאדם נוסף בצימר המשפחתי: 200 ש"ח.</li>
+</ul>
+
+<p><strong>בקרבת מקום (5 דקות נסיעה):</strong></p>
+<ul>
+  <li>בית קפה בטבע "קופיקנה" – ניתן לאכול שם ארוחת בוקר.</li>
+</ul>
+
+<p><strong>אטרקציות באזור:</strong></p>
+<ul>
+  <li>יקבים: יקב שילה, יקב טורא, יקב פסגות, יקב גבעות</li>
+  <li>טיולי ריינג'רים</li>
+  <li>רכיבה על סוסים</li>
+  <li>ועוד...</li>
+</ul>
+
           </div>
 
           <div className="bg-white p-6 shadow-md rounded-lg text-center">

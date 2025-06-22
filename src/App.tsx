@@ -4,6 +4,8 @@ import ContactSection from "./components/ContactSection";
 import { Zimmer } from "./components/ZimmerCard";
 import CabinIcon from "./assets/cabinicon.svg?react";
 import smallPoolImage from "./components/assets/smallpool.jpeg";
+import fig from "./components/assets/fig.jpeg";
+
 
 const rawZimmers: Zimmer[] = [
   {
@@ -35,19 +37,17 @@ const rawZimmers: Zimmer[] = [
     name: "תאנה",
     price: 400,
     description: "צימר שקט עם אווירה מרגיעה וג'קוזי",
-    images: [
-      "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    ],
     capacity: 2,
+    images: [fig],
     is_available: true,
-    link: "/room-tnina",
+    link: "/room-fig",
   },
   {
     id: 4,
     name: "רימון",
     price: 450,
     description: "צימר יוקרתי עם נוף פנורמי וחצר פרטית",
-    images: [smallPoolImage], // שימוש בתמונה המיובאת
+    images: [smallPoolImage], 
     capacity: 2,
     is_available: true,
     link: "/room-rimon",
