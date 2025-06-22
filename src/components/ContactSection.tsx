@@ -29,11 +29,11 @@ export default function ContactSection() {
             <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
               <span className="text-white text-2xl">📍</span>
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-4">מיקום</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">מיקום:</h3>
             <p className="text-gray-600 mb-4">
               חוות יאיר, סמוך לאריאל במיקום שקט ומפנק
             </p>
-              <p><strong>מיקום:</strong> הצימרים ממוקמים בקרבה גבוהה למרכז הארץ. המיקום המדויק יישלח לאחר סגירת ההזמנה.</p>
+              <p>הצימרים ממוקמים בקרבה גבוהה למרכז הארץ. המיקום המדויק יישלח לאחר סגירת ההזמנה.</p>
 
 <p><strong>הערות:</strong></p>
 <ul>
