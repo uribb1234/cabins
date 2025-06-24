@@ -6,37 +6,145 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
+      direction: rtl;
       padding: 20px;
-      direction: rtl; /* כיוון ימין-שמאל לכל הדף */
     }
-    h1 {
-      text-align: center;
-      color: #333;
+    label, input, select {
+      display: block;
+      margin: 10px 0;
     }
-    p {
-      text-align: center;
-      color: #666;
+    input, select {
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
     }
-    .form-container {
-      float: right; /* מזיז את הטופס לימין */
-      width: 640px; /* רוחב קבוע של ה-iframe */
-      margin-left: 20px; /* מרווח מהטקסט משמאל */
-    }
-    .content {
-      max-width: 600px; /* מגביל את הרוחב של הטקסט */
-      margin-left: auto; /* מזיז את הטקסט לשמאל יחסית לטופס */
+    .price {
+      font-weight: bold;
+      margin-top: 20px;
+      color: green;
     }
   </style>
 </head>
 <body>
-  <h1 dir="rtl">הזמנת צימר - אלה ואלון</h1>
-  <div class="content">
-    <p dir="rtl">מלא את הטופס כדי להזמין צימר:</p>
-    <p>לאחר שליחת הטופס, ניצור איתך קשר בטלפון.</p>
-  </div>
-  <div class="form-container">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdga0iBp-b5JUhDcsZhAcIa7_gUTeGj29sBkFq1mKm7Esr0yA/viewform?usp=header" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">טעינת הטופס...</iframe>
-  </div>
+
+  <h1>הזמנת צימר</h1>
+
+  <form id="zimmerForm">
+    <label>בחר צימר:
+      <select id="zimmerSelect">
+        <option value="אלון">אלון</option>
+        <option value="אלה">אלה</option>
+        <option value="רימון">רימון</option>
+        <option value="תאנה">תאנה</option>
+      </select>
+    </label>
+
+    <label>תאריך התחלה:
+      <input type="date" id="startDate" required>
+    </label>
+
+    <label>תאריך סיום:
+      <input type="date" id="endDate" required>
+    </label>
+
+    <label>מספר אנשים:
+      <input type="number" id="numPeople" min="1" value="2" required>
+    </label>
+
+    <div class="price" id="priceDisplay">המחיר שלך: ₪0</div>
+
+    <label>שם מלא:
+      <input type="text" id="fullName" required>
+    </label>
+
+    <label>מספר טלפון:
+      <input type="tel" id="phone" required>
+    </label>
+
+    <button type="submit">שלח הזמנה</button>
+  </form>
+
+  <script>
+    const zimmers = {
+      "אלון": { max: 7, weekday: 800, weekend: 850, extra: 200 },
+      "אלה": { max: 7, weekday: 800, weekend: 850, extra: 200 },
+      "רימון": { max: 2, weekday: 850, weekend: 950, extra: null },
+      "תאנה": { max: 2, weekday: 680, weekend: 800, extra: null }
+    };
+
+    function isWeekend(date) {
+      const day = new Date(date).getDay();
+      return day === 5 || day === 6;
+    }
+
+    function calculatePrice(zimmerName, start, end, people) {
+      const zimmer = zimmers[zimmerName];
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      const nights = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+      if (nights <= 0) return 0;
+
+      let total = 0;
+      for (let i = 0; i < nights; i++) {
+        const date = new Date(startDate);
+        date.setDate(date.getDate() + i);
+        const base = isWeekend(date) ? zimmer.weekend : zimmer.weekday;
+        const extra = zimmer.extra ? Math.max(0, people - 2) * zimmer.extra : 0;
+        total += base + extra;
+      }
+      return total;
+    }
+
+    const form = document.getElementById("zimmerForm");
+    const zimmerSelect = document.getElementById("zimmerSelect");
+    const numPeople = document.getElementById("numPeople");
+    const startDate = document.getElementById("startDate");
+    const endDate = document.getElementById("endDate");
+    const priceDisplay = document.getElementById("priceDisplay");
+
+    function updatePrice() {
+      const zimmer = zimmerSelect.value;
+      const start = startDate.value;
+      const end = endDate.value;
+      const people = parseInt(numPeople.value);
+      const z = zimmers[zimmer];
+      if (people > z.max) {
+        alert(`צימר ${zimmer} מאפשר עד ${z.max} אנשים בלבד.`);
+        numPeople.value = z.max;
+        return;
+      }
+      const price = calculatePrice(zimmer, start, end, people);
+      priceDisplay.textContent = `המחיר שלך: ₪${price}`;
+    }
+
+    [zimmerSelect, numPeople, startDate, endDate].forEach(el => {
+      el.addEventListener("change", updatePrice);
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = {
+        zimmer: zimmerSelect.value,
+        startDate: startDate.value,
+        endDate: endDate.value,
+        numPeople: numPeople.value,
+        fullName: document.getElementById("fullName").value,
+        phone: document.getElementById("phone").value
+      };
+
+      const response = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec", {
+        method: "POST",
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert("ההזמנה נשלחה בהצלחה!");
+        form.reset();
+        priceDisplay.textContent = "המחיר שלך: ₪0";
+      } else {
+        alert("אירעה שגיאה בשליחת ההזמנה.");
+      }
+    });
+  </script>
 </body>
 </html>

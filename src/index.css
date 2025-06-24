@@ -1,5 +1,5 @@
 :root {
-  font-family: "Rubik", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Rubik", system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -100,7 +100,7 @@ button:focus-visible {
 /* --- כרטיס Zimmer --- */
 .zimmer-card {
   background-color: #ffffff;
-  color: #374151;
+  color: black;
   border-radius: 0;
   box-shadow: none;
   transition: all 0.5s ease;
@@ -116,7 +116,7 @@ button:focus-visible {
 }
 
 .zimmer-card:hover h3 {
-  color: #f59e0b;
+  color: blue;
 }
 
 .zimmer-card img {
@@ -140,7 +140,7 @@ button:focus-visible {
 .zimmer-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #374151;
+  color: black;
   transition: color 0.3s ease;
 }
 
