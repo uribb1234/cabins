@@ -4,9 +4,13 @@ import ContactSection from "./components/ContactSection";
 import { Zimmer } from "./components/ZimmerCard";
 import CabinIcon from "./assets/cabinicon.svg?react";
 import smallPoolImage from "./components/assets/smallpool.jpeg";
-import fig from "./components/assets/fig.jpeg";
+import fig from "./components/assets/fig.jpeg"; 
 import alon from "./components/assets/alon.png";
 import ela from "./components/assets/ela.png";
+import rimon from "./components/assets/rimon.png"; 
+import rimon2 from "./components/assets/rimon2.png"; 
+
+
 import NavMenu from "./NavMenu";
 
 const rawZimmers: Zimmer[] = [
@@ -15,7 +19,7 @@ const rawZimmers: Zimmer[] = [
     name: "אלה",
     price: 520,
     description: "צימר רומנטי עם נוף מרהיב ואמבטיה מפנקת",
-    images: [ela],
+    images: [ela,], // 3 תמונות
     capacity: 6,
     is_available: true,
     link: "/room-ela",
@@ -25,7 +29,7 @@ const rawZimmers: Zimmer[] = [
     name: "אלון",
     price: 380,
     description: "צימר משפחתי נעים עם חצר ופינת ילדים",
-    images: [alon],
+    images: [alon,], // 3 תמונות
     capacity: 6,
     is_available: true,
     link: "/room-alon",
@@ -35,8 +39,8 @@ const rawZimmers: Zimmer[] = [
     name: "תאנה",
     price: 400,
     description: "צימר שקט עם אווירה מרגיעה וג'קוזי",
+    images: [fig,], // 3 תמונות
     capacity: 2,
-    images: [fig],
     is_available: true,
     link: "/room-fig",
   },
@@ -45,7 +49,7 @@ const rawZimmers: Zimmer[] = [
     name: "רימון",
     price: 450,
     description: "צימר יוקרתי עם נוף פנורמי וחצר פרטית",
-    images: [smallPoolImage],
+    images: [smallPoolImage, rimon, rimon2], // 3 תמונות
     capacity: 2,
     is_available: true,
     link: "/room-rimon",
@@ -57,7 +61,7 @@ function App() {
     <div>
       <NavMenu />
       <HeroSection zimmers={rawZimmers} />
-      <ContactSection id="contact" /> {/* הוספת id="contact" כאן */}
+      <ContactSection id="contact" />
     </div>
   );
 }

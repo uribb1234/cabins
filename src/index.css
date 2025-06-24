@@ -215,6 +215,38 @@ button:focus-visible {
   line-height: 1.2;
 }
 
+/* --- סגנונות לחצים בקרוסלה --- */
+.zimmer-card .carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #374151;
+  transition: background-color 0.3s;
+}
+
+.zimmer-card .carousel-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.zimmer-card .carousel-button.prev {
+  left: 10px;
+}
+
+.zimmer-card .carousel-button.next {
+  right: 10px;
+}
+
 /* --- מצבי ניגוד --- */
 @media (prefers-color-scheme: light) {
   :root {
@@ -253,6 +285,3 @@ nav {
   top: 0;
   z-index: 1000;
 }
-
-
-
