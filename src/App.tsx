@@ -35,6 +35,7 @@ const rawZimmers: Zimmer[] = [
     price: 800,
     description:"צימר משפחתי עם מנגל ובריכה",
     images: [alon, bigpool, alon2 ], 
+    capacity: 6,
     is_available: true,
     link: "/room-alon",
   },
