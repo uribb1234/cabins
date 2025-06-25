@@ -30,14 +30,6 @@ export default function HeroSection({ zimmers }: HeroSectionProps) {
             <Calendar className="w-6 h-6" />
             מלאו טופס הזמנה
           </a>
-          <a
-            href="https://www.zimmerland.co.il/%D7%90%D7%9C%D7%94-%D7%95%D7%90%D7%9C%D7%95%D7%9F-%D7%91%D7%A9%D7%95%D7%9E%D7%A8%D7%95%D7%9F.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white/10 text-white px-6 py-4 text-lg font-semibold rounded-lg border border-white/30 hover:bg-white/20 transition-colors block"
-          >
-            הזמנה באתר צימרלנד
-          </a>
         </div>
 
         <h2 className="text-3xl font-semibold mb-8">הצימרים שלנו</h2>

@@ -24,14 +24,25 @@ body {
   align-items: center;
 }
 
+/* ברירת מחדל ללינקים - לבן וללא קו תחתון */
 a {
   font-weight: 500;
-  color: #e0e0ff;
-  text-decoration: inherit;
+  color: white;
+  text-decoration: none;
 }
-a:hover {
-  color: #fff;
+
+/* קישורים חיצוניים עם underline וכחול */
+a.external-link {
+  color: #60a5fa; /* כחול בהיר */
+  text-decoration: underline;
 }
+
+a.external-link:hover {
+  color: #1e3a8a; /* כחול כהה בהובר */
+  text-decoration: underline;
+}
+
+/* שאר סגנונות שלך: */
 
 .hero-title {
   color: #1e3a8a;
@@ -56,6 +67,7 @@ a.custom-button {
   -webkit-backdrop-filter: blur(5px);
   transition: background-color 0.3s;
 }
+
 a.custom-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
@@ -70,10 +82,13 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  color: white;
 }
+
 button:hover {
   border-color: #ffffff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -100,7 +115,6 @@ button:focus-visible {
 /* --- כרטיס Zimmer --- */
 .zimmer-card {
   background-color: #ffffff;
-  color: black;
   border-radius: 0;
   box-shadow: none;
   transition: all 0.5s ease;
@@ -113,10 +127,17 @@ button:focus-visible {
   width: 100%;
   max-width: 300px;
   z-index: 1;
+
+  /* הוספתי כאן צבע טקסט שחור */
+  color: black;
 }
 
-.zimmer-card:hover h3 {
-  color: blue;
+/* הבטחה שכל הטקסטים הפנימיים לא יקבלו צבע אחר מה־zimmer-card */
+.zimmer-card p,
+.zimmer-card span,
+.zimmer-card h3,
+.zimmer-card a {
+  color: inherit;
 }
 
 .zimmer-card img {
@@ -125,6 +146,7 @@ button:focus-visible {
   object-fit: cover;
   transition: transform 0.7s ease;
 }
+
 .zimmer-card:hover img {
   transform: scale(1.1);
 }
@@ -133,15 +155,25 @@ button:focus-visible {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  gap: 1rem;
+  height: auto;
 }
 
 .zimmer-card h3 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: black;
   transition: color 0.3s ease;
+}
+
+.zimmer-card:hover h3 {
+  color: blue;
+}
+
+.zimmer-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  overflow-wrap: break-word;
 }
 
 .zimmer-card .price {
@@ -150,36 +182,14 @@ button:focus-visible {
   color: #f59e0b;
 }
 
-.zimmer-card .features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-}
-
-.zimmer-card .feature {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #fef3c7;
-  padding: 0.5rem 0.75rem;
-  border-radius: 9999px;
-}
-
-.zimmer-card .feature svg {
-  width: 1rem;
-  height: 1rem;
-  color: #d97706;
-}
-
 .zimmer-card .availability {
   display: inline-flex;
   align-items: center;
   padding: 0.25rem 0.625rem;
   border-radius: 9999px;
   background-color: #d1fae5;
-  color: #065f46;
   border: 1px solid #a7f3d0;
+  color: black;
 }
 
 /* --- גריד עם כרטיסיות צמודות --- */
@@ -196,6 +206,7 @@ button:focus-visible {
   gap: 0;
   justify-items: center;
 }
+
 @media (min-width: 640px) {
   .grid-cols-1.sm\:grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
@@ -210,6 +221,7 @@ button:focus-visible {
   align-items: center;
   gap: 0.5rem;
 }
+
 .icon-title-group h3 {
   margin: 0;
   line-height: 1.2;
@@ -220,8 +232,8 @@ button:focus-visible {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 40px;
-  height: 40px;
+  width: 15px;
+  height: 30px;
   background-color: rgba(255, 255, 255, 0.7);
   border: none;
   border-radius: 50%;
@@ -231,7 +243,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #374151;
+  color: #000000;
   transition: background-color 0.3s;
 }
 
@@ -245,37 +257,6 @@ button:focus-visible {
 
 .zimmer-card .carousel-button.next {
   right: 10px;
-}
-
-/* --- מצבי ניגוד --- */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-  a.custom-button {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-color: #000000;
-    color: #000000;
-  }
-  a.custom-button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  .zimmer-card {
-    background-color: #ffffff;
-  }
-  .zimmer-card h3 {
-    color: #374151;
-  }
-  .zimmer-card .price {
-    color: #d97706;
-  }
 }
 
 /* --- תפריט ניווט --- */

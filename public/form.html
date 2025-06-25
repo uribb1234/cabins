@@ -34,8 +34,8 @@
       <select id="zimmerSelect">
         <option value="אלון">אלון</option>
         <option value="אלה">אלה</option>
-        <option value="רימון">רימון</option>
-        <option value="תאנה">תאנה</option>
+        <option value="רימון">רימון (צימר זוגי)</option>
+        <option value="תאנה">תאנה (צימר זוגי)</option>
       </select>
     </label>
 
@@ -54,11 +54,22 @@
     <div class="price" id="priceDisplay">המחיר שלך: ₪0</div>
 
     <label>שם מלא:
-      <input type="text" id="fullName" required>
+      <input
+        type="text"
+        id="fullName"
+        required
+        pattern="^[^0-9]+$"
+        title="השם לא יכול להכיל מספרים">
     </label>
 
     <label>מספר טלפון:
-      <input type="tel" id="phone" required>
+      <input
+        type="tel"
+        id="phone"
+        required
+        pattern="^0[2-9][0-9]{7,8}$"
+        maxlength="10"
+        title="הכנס מספר טלפון ישראלי תקני (10 ספרות, מתחיל ב־0)">
     </label>
 
     <button type="submit">שלח הזמנה</button>
@@ -66,8 +77,8 @@
 
   <script>
     const zimmers = {
-      "אלון": { max: 7, weekday: 800, weekend: 850, extra: 200 },
-      "אלה": { max: 7, weekday: 800, weekend: 850, extra: 200 },
+      "אלון": { max: 6, weekday: 800, weekend: 850, extra: 200 },
+      "אלה": { max: 6, weekday: 800, weekend: 850, extra: 200 },
       "רימון": { max: 2, weekday: 850, weekend: 950, extra: null },
       "תאנה": { max: 2, weekday: 680, weekend: 800, extra: null }
     };
@@ -103,17 +114,19 @@
     const priceDisplay = document.getElementById("priceDisplay");
 
     function updatePrice() {
-      const zimmer = zimmerSelect.value;
+      let zimmerText = zimmerSelect.options[zimmerSelect.selectedIndex].text;
+      let zimmerName = zimmerText.includes("(") ? zimmerText.split(" (")[0] : zimmerText;
+
       const start = startDate.value;
       const end = endDate.value;
-      const people = parseInt(numPeople.value);
-      const z = zimmers[zimmer];
-      if (people > z.max) {
-        alert(`צימר ${zimmer} מאפשר עד ${z.max} אנשים בלבד.`);
+      const peopleCount = parseInt(numPeople.value);
+      const z = zimmers[zimmerName];
+      if (peopleCount > z.max) {
+        alert(`צימר ${zimmerName} מאפשר עד ${z.max} אנשים בלבד.`);
         numPeople.value = z.max;
         return;
       }
-      const price = calculatePrice(zimmer, start, end, people);
+      const price = calculatePrice(zimmerName, start, end, peopleCount);
       priceDisplay.textContent = `המחיר שלך: ₪${price}`;
     }
 
@@ -123,13 +136,32 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
+      let zimmerText = zimmerSelect.options[zimmerSelect.selectedIndex].text;
+      let zimmerName = zimmerText.includes("(") ? zimmerText.split(" (")[0] : zimmerText;
+
+      const fullName = document.getElementById("fullName");
+      const phone = document.getElementById("phone");
+
+      if (/\d/.test(fullName.value)) {
+        alert("השם לא יכול להכיל מספרים.");
+        fullName.focus();
+        return;
+      }
+
+      if (!/^0[2-9][0-9]{7,8}$/.test(phone.value)) {
+        alert("יש להזין מספר טלפון תקני (10 ספרות)");
+        phone.focus();
+        return;
+      }
+
       const formData = {
-        zimmer: zimmerSelect.value,
+        zimmer: zimmerName,
         startDate: startDate.value,
         endDate: endDate.value,
         numPeople: numPeople.value,
-        fullName: document.getElementById("fullName").value,
-        phone: document.getElementById("phone").value
+        fullName: fullName.value,
+        phone: phone.value
       };
 
       const response = await fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec", {
