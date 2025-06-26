@@ -1,79 +1,113 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>הזמנת צימרים - אלה ואלון</title>
+  <link rel="stylesheet" href="/src/index.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      direction: rtl;
-      padding: 20px;
+      margin: 0;
+      padding: 0;
+      background-color: #319795; /* תכלת */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: "Rubik", sans-serif;
     }
-    label, input, select {
-      display: block;
-      margin: 10px 0;
-    }
-    input, select {
-      padding: 8px;
+
+    .form-container {
+      background: white;
+      color: black;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
       width: 100%;
-      max-width: 400px;
     }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
     .price {
       font-weight: bold;
-      margin-top: 20px;
       color: green;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      background-color: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 12px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #333;
     }
   </style>
 </head>
 <body>
+  <div class="form-container">
+    <h1>הזמנת צימר</h1>
+    <form id="zimmerForm">
+      <label>בחר צימר:
+        <select id="zimmerSelect">
+          <option value="אלון">אלון</option>
+          <option value="אלה">אלה</option>
+          <option value="רימון">רימון (צימר זוגי)</option>
+          <option value="תאנה">תאנה (צימר זוגי)</option>
+        </select>
+      </label>
 
-  <h1>הזמנת צימר</h1>
+      <label>תאריך התחלה:
+        <input type="date" id="startDate" required />
+      </label>
 
-  <form id="zimmerForm">
-    <label>בחר צימר:
-      <select id="zimmerSelect">
-        <option value="אלון">אלון</option>
-        <option value="אלה">אלה</option>
-        <option value="רימון">רימון (צימר זוגי)</option>
-        <option value="תאנה">תאנה (צימר זוגי)</option>
-      </select>
-    </label>
+      <label>תאריך סיום:
+        <input type="date" id="endDate" required />
+      </label>
 
-    <label>תאריך התחלה:
-      <input type="date" id="startDate" required>
-    </label>
+      <label>מספר אנשים:
+        <input type="number" id="numPeople" min="1" value="2" required />
+      </label>
 
-    <label>תאריך סיום:
-      <input type="date" id="endDate" required>
-    </label>
+      <div class="price" id="priceDisplay">המחיר שלך: ₪0</div>
 
-    <label>מספר אנשים:
-      <input type="number" id="numPeople" min="1" value="2" required>
-    </label>
+      <label>שם מלא:
+        <input type="text" id="fullName" required pattern="^[^0-9]+$" title="השם לא יכול להכיל מספרים" />
+      </label>
 
-    <div class="price" id="priceDisplay">המחיר שלך: ₪0</div>
+      <label>מספר טלפון:
+        <input type="tel" id="phone" required pattern="^0[2-9][0-9]{7,8}$" maxlength="10" title="הכנס מספר טלפון תקני (10 ספרות)" />
+      </label>
 
-    <label>שם מלא:
-      <input
-        type="text"
-        id="fullName"
-        required
-        pattern="^[^0-9]+$"
-        title="השם לא יכול להכיל מספרים">
-    </label>
-
-    <label>מספר טלפון:
-      <input
-        type="tel"
-        id="phone"
-        required
-        pattern="^0[2-9][0-9]{7,8}$"
-        maxlength="10"
-        title="הכנס מספר טלפון ישראלי תקני (10 ספרות, מתחיל ב־0)">
-    </label>
-
-    <button type="submit">שלח הזמנה</button>
-  </form>
+      <button type="submit">שלח הזמנה</button>
+    </form>
+  </div>
 
   <script>
     const zimmers = {
