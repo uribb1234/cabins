@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "framer-motion": "^12.18.1",
     "lucide-react": "^0.518.0",
+    "mysql2": "^3.14.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0"
@@ -34,5 +37,18 @@
     "url": "^0.11.4",
     "vite": "^6.3.5",
     "vite-plugin-svgr": "^4.3.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uribb1234/cabins.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uribb1234/cabins/issues"
+  },
+  "homepage": "https://github.com/uribb1234/cabins#readme"
 }
